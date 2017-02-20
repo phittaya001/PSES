@@ -9,6 +9,7 @@ c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.C
 c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CSI.CastleWindsorHelper.csprojResolveAssemblyReference.cache
 c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CastleWindsorHelper.dll
 c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CastleWindsorHelper.pdb
+<<<<<<< HEAD
 D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\CastleWindsorHelper.dll
 D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\CastleWindsorHelper.pdb
 D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\Castle.Core.dll
@@ -20,3 +21,16 @@ D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\Castle.Windsor.xml
 D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CSI.CastleWindsorHelper.csprojResolveAssemblyReference.cache
 D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CastleWindsorHelper.dll
 D:\PSES\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CastleWindsorHelper.pdb
+=======
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\CastleWindsorHelper.dll
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\CastleWindsorHelper.pdb
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\Castle.Core.dll
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\Castle.Windsor.dll
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\CSI.Common.dll
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\CSI.Common.pdb
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\Castle.Core.xml
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\bin\Debug\Castle.Windsor.xml
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CSI.CastleWindsorHelper.csprojResolveAssemblyReference.cache
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CastleWindsorHelper.dll
+D:\PesWeb\PesWeb\PesWeb\_CSI\CSI.CastleWindsorHelper\obj\Debug\CastleWindsorHelper.pdb
+>>>>>>> 994269cab0f925214f0dc8cd833f81bebe48fbbc

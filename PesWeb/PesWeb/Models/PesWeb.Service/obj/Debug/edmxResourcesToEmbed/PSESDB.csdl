@@ -78,6 +78,13 @@
     <FunctionImport Name="SP_GetHeader2BYHJ" ReturnType="Collection(Int32)">
       <Parameter Name="HJ_ID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="SP_GetAllHeaderByJobID" ReturnType="Collection(PSESModel.SP_GetAllHeaderByJobID_Result)" />
+    <FunctionImport Name="SP_HeaderTopByJob" ReturnType="Collection(PSESModel.SP_HeaderTopByJob_Result)" />
+    <FunctionImport Name="SP_GetHeaderMidByHeaderTopAndJobID" ReturnType="Collection(PSESModel.SP_GetHeaderMidByHeaderTopAndJobID_Result)">
+      <Parameter Name="H1_ID" Mode="In" Type="Int32" />
+      <Parameter Name="JobID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_HeaderTopByJobID" ReturnType="Collection(PSESModel.SP_HeaderTopByJobID_Result)" />
   </EntityContainer>
   <ComplexType Name="GetEvaluationRequest_Result">
     <Property Type="Int32" Name="Eva_ID" Nullable="false" />
@@ -116,5 +123,40 @@
     <Property Type="Int32" Name="HJ_ID" Nullable="false" />
     <Property Type="Int32" Name="PositionNo" Nullable="true" />
     <Property Type="Int32" Name="H1_ID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GetAllHeaderByJobID_Result">
+    <Property Type="Int32" Name="H3_ID" Nullable="false" />
+    <Property Type="String" Name="MidText" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="BotText" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="H2_ID" Nullable="false" />
+    <Property Type="Int32" Name="HJ_ID" Nullable="true" />
+    <Property Type="Int32" Name="H1_ID" Nullable="true" />
+    <Property Type="Int32" Name="JobID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_HeaderTopByJob_Result">
+    <Property Type="Int32" Name="PositionNo" Nullable="false" />
+    <Property Type="String" Name="PositionName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PositionAlias" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="H1_ID" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Alias" Nullable="true" MaxLength="1" />
+    <Property Type="Int32" Name="HJ_ID" Nullable="false" />
+    <Property Type="String" Name="Text_Eng" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="SP_GetHeaderMidByHeaderTopAndJobID_Result">
+    <Property Type="Int32" Name="HJ_ID" Nullable="false" />
+    <Property Type="Int32" Name="PositionNo" Nullable="true" />
+    <Property Type="Int32" Name="H2_ID" Nullable="false" />
+    <Property Type="Int32" Name="H1_ID" Nullable="true" />
+    <Property Type="String" Name="Text_Eng" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="SP_HeaderTopByJobID_Result">
+    <Property Type="Int32" Name="H1_ID" Nullable="false" />
+    <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Text_Eng" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Alias" Nullable="true" MaxLength="1" />
+    <Property Type="Int32" Name="HJ_ID" Nullable="false" />
+    <Property Type="Int32" Name="PositionNo" Nullable="true" />
   </ComplexType>
 </Schema>

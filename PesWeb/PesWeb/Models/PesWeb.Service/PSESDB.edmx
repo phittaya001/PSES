@@ -82,11 +82,18 @@
           <Parameter Name="H2_ID" Type="int" Mode="In" />
         </Function>
         <Function Name="GetHeaderByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetAllHeaderByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GetAllHeaderJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_GetHeader2BYHJ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="HJ_ID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_GetHeaderMidByHeaderTopAndJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="H1_ID" Type="int" Mode="In" />
+          <Parameter Name="JobID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_GetJobDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_HeaderTopByJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_HeaderTopByJobID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PSESModelStoreContainer">
           <EntitySet Name="tblEvaluation" EntityType="Self.tblEvaluation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblHeaderBot" EntityType="Self.tblHeaderBot" Schema="dbo" store:Type="Tables" />
@@ -176,8 +183,16 @@
           <FunctionImport Name="SP_GetJobDetail" ReturnType="Collection(PSESModel.SP_GetJobDetail_Result)" />
           <FunctionImport Name="SP_GetAllHeaderJob" ReturnType="Collection(PSESModel.SP_GetAllHeaderJob_Result)" />
           <FunctionImport Name="SP_GetHeader2BYHJ" ReturnType="Collection(Int32)">
-            <Parameter Name="HJ_ID" Mode="In" Type="Int32" />
+          <Parameter Name="HJ_ID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_GetAllHeaderByJobID" ReturnType="Collection(PSESModel.SP_GetAllHeaderByJobID_Result)">
+          </FunctionImport>
+          <FunctionImport Name="SP_HeaderTopByJob" ReturnType="Collection(PSESModel.SP_HeaderTopByJob_Result)" />
+          <FunctionImport Name="SP_GetHeaderMidByHeaderTopAndJobID" ReturnType="Collection(PSESModel.SP_GetHeaderMidByHeaderTopAndJobID_Result)">
+            <Parameter Name="H1_ID" Mode="In" Type="Int32" />
+            <Parameter Name="JobID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_HeaderTopByJobID" ReturnType="Collection(PSESModel.SP_HeaderTopByJobID_Result)" />
         </EntityContainer>
         <ComplexType Name="GetEvaluationRequest_Result">
           <Property Type="Int32" Name="Eva_ID" Nullable="false" />
@@ -216,6 +231,41 @@
           <Property Type="Int32" Name="HJ_ID" Nullable="false" />
           <Property Type="Int32" Name="PositionNo" Nullable="true" />
           <Property Type="Int32" Name="H1_ID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_GetAllHeaderByJobID_Result">
+          <Property Type="Int32" Name="H3_ID" Nullable="false" />
+          <Property Type="String" Name="MidText" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="BotText" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="H2_ID" Nullable="false" />
+          <Property Type="Int32" Name="HJ_ID" Nullable="true" />
+          <Property Type="Int32" Name="H1_ID" Nullable="true" />
+          <Property Type="Int32" Name="JobID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_HeaderTopByJob_Result">
+          <Property Type="Int32" Name="PositionNo" Nullable="false" />
+          <Property Type="String" Name="PositionName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PositionAlias" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="H1_ID" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Alias" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="HJ_ID" Nullable="false" />
+          <Property Type="String" Name="Text_Eng" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="SP_GetHeaderMidByHeaderTopAndJobID_Result">
+          <Property Type="Int32" Name="HJ_ID" Nullable="false" />
+          <Property Type="Int32" Name="PositionNo" Nullable="true" />
+          <Property Type="Int32" Name="H2_ID" Nullable="false" />
+          <Property Type="Int32" Name="H1_ID" Nullable="true" />
+          <Property Type="String" Name="Text_Eng" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="SP_HeaderTopByJobID_Result">
+          <Property Type="Int32" Name="H1_ID" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Text_Eng" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Alias" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="HJ_ID" Nullable="false" />
+          <Property Type="Int32" Name="PositionNo" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -329,6 +379,57 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_GetHeader2BYHJ" FunctionName="PSESModel.Store.SP_GetHeader2BYHJ" />
+          <FunctionImportMapping FunctionImportName="SP_GetAllHeaderByJobID" FunctionName="PSESModel.Store.SP_GetAllHeaderByJobID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSESModel.SP_GetAllHeaderByJobID_Result">
+                <ScalarProperty Name="H3_ID" ColumnName="H3_ID" />
+                <ScalarProperty Name="MidText" ColumnName="MidText" />
+                <ScalarProperty Name="BotText" ColumnName="BotText" />
+                <ScalarProperty Name="H2_ID" ColumnName="H2_ID" />
+                <ScalarProperty Name="HJ_ID" ColumnName="HJ_ID" />
+                <ScalarProperty Name="H1_ID" ColumnName="H1_ID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HeaderTopByJob" FunctionName="PSESModel.Store.SP_HeaderTopByJob">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSESModel.SP_HeaderTopByJob_Result">
+                <ScalarProperty Name="PositionNo" ColumnName="PositionNo" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="PositionAlias" ColumnName="PositionAlias" />
+                <ScalarProperty Name="H1_ID" ColumnName="H1_ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="HJ_ID" ColumnName="HJ_ID" />
+                <ScalarProperty Name="Text_Eng" ColumnName="Text_Eng" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetHeaderMidByHeaderTopAndJobID" FunctionName="PSESModel.Store.SP_GetHeaderMidByHeaderTopAndJobID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSESModel.SP_GetHeaderMidByHeaderTopAndJobID_Result">
+                <ScalarProperty Name="HJ_ID" ColumnName="HJ_ID" />
+                <ScalarProperty Name="PositionNo" ColumnName="PositionNo" />
+                <ScalarProperty Name="H2_ID" ColumnName="H2_ID" />
+                <ScalarProperty Name="H1_ID" ColumnName="H1_ID" />
+                <ScalarProperty Name="Text_Eng" ColumnName="Text_Eng" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_HeaderTopByJobID" FunctionName="PSESModel.Store.SP_HeaderTopByJobID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PSESModel.SP_HeaderTopByJobID_Result">
+                <ScalarProperty Name="H1_ID" ColumnName="H1_ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Text_Eng" ColumnName="Text_Eng" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="HJ_ID" ColumnName="HJ_ID" />
+                <ScalarProperty Name="PositionNo" ColumnName="PositionNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

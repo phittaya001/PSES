@@ -122,5 +122,33 @@ namespace PesWeb.Service
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_GetHeader2BYHJ", hJ_IDParameter);
         }
+    
+        public virtual ObjectResult<SP_GetAllHeaderByJobID_Result> SP_GetAllHeaderByJobID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetAllHeaderByJobID_Result>("SP_GetAllHeaderByJobID");
+        }
+    
+        public virtual ObjectResult<SP_HeaderTopByJob_Result> SP_HeaderTopByJob()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HeaderTopByJob_Result>("SP_HeaderTopByJob");
+        }
+    
+        public virtual ObjectResult<SP_GetHeaderMidByHeaderTopAndJobID_Result> SP_GetHeaderMidByHeaderTopAndJobID(Nullable<int> h1_ID, Nullable<int> jobID)
+        {
+            var h1_IDParameter = h1_ID.HasValue ?
+                new ObjectParameter("H1_ID", h1_ID) :
+                new ObjectParameter("H1_ID", typeof(int));
+    
+            var jobIDParameter = jobID.HasValue ?
+                new ObjectParameter("JobID", jobID) :
+                new ObjectParameter("JobID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetHeaderMidByHeaderTopAndJobID_Result>("SP_GetHeaderMidByHeaderTopAndJobID", h1_IDParameter, jobIDParameter);
+        }
+    
+        public virtual ObjectResult<SP_HeaderTopByJobID_Result> SP_HeaderTopByJobID()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_HeaderTopByJobID_Result>("SP_HeaderTopByJobID");
+        }
     }
 }
