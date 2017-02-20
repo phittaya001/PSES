@@ -1,0 +1,5 @@
+c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.Common\bin\Debug\CSI.Common.dll.config
+c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.Common\bin\Debug\CSI.Common.dll
+c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.Common\bin\Debug\CSI.Common.pdb
+c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.Common\obj\Debug\CSI.Common.dll
+c:\users\phittaya\documents\visual studio 2015\Projects\PesWeb\PesWeb\_CSI\CSI.Common\obj\Debug\CSI.Common.pdb
