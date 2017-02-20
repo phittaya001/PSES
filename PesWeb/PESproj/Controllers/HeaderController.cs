@@ -12,6 +12,51 @@ namespace PESproj.Controllers
     [RoutePrefix("Header")]
     public class HeaderController : ApiController
     {
+        [Route("HeaderTop")]
+        [HttpGet]
+        public List<tblHeaderTop> GetAllHeaderTop()
+        {
+            var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
+            List<tblHeaderTop> GetHeaderTop = header.getAllHeaderTop().ToList();
+            return GetHeaderTop;
+        }
+
+        [Route("HeaderTop/Job/{JobID}")]
+        [HttpGet]
+        public List<SP_HeaderTopByJobID_Result> GetHeaderTopByJobID(int JobID)
+        {
+            var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
+            List<SP_HeaderTopByJobID_Result> GetHeaderTop = header.getHeaderByJob().Where(a=>a.PositionNo==JobID).ToList();
+            return GetHeaderTop;
+        }
+
+        [Route("HeaderTop/HJ/{HJID}")]
+        [HttpGet]
+        public List<tblHeaderTop> GetHeaderTopByHJID(int HJID)
+        {
+            var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
+            List<tblHeaderTop> GetHeaderTop = header.getAllHeaderTop().ToList();
+            return GetHeaderTop;
+        }
+
+        [Route("AllHeader")]
+        [HttpGet]
+        public List<SP_GetAllHeaderByJobID_Result> GetAllHeader()
+        {
+            var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
+            List<SP_GetAllHeaderByJobID_Result> AllHeader = header.getAllHeader();
+            return AllHeader;
+        }
+
+        [Route("AllHeader/{JobID}")]
+        [HttpGet]
+        public List<SP_GetAllHeaderByJobID_Result> GetAllHeaderByJobID(int JobID)
+        {
+            var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
+            List<SP_GetAllHeaderByJobID_Result> AllHeader = header.getAllHeader().Where(a=>a.JobID==JobID).ToList();
+            return AllHeader;
+        }
+
         [Route("position")]
         [HttpGet]
         public List<tblPosition> getJobDetail()
@@ -46,13 +91,22 @@ namespace PESproj.Controllers
             return GetHeaderMid;
         }
 
-        [Route("HeaderMid/{HeaderJobID}")]
+        [Route("HeaderMid/ByHJ/{HeaderJobID}")]
         [HttpGet]
-        public List<tblHeaderMid> GetHeaderMidByHeaderTopID(int HeaderjobID)
+        public List<tblHeaderMid> GetHeaderMidByHeaderJobID(int HeaderjobID)
         {
             var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
             List<tblHeaderMid> HeadrMidByHearderJobID = header.getAllHeaderMid().Where(a => a.HJ_ID == HeaderjobID).ToList();
             return HeadrMidByHearderJobID;
+        }
+
+        [Route("HeaderMid/{HeaderTopID}/{JobID}")]
+        [HttpGet]
+        public List<SP_GetHeaderMidByHeaderTopAndJobID_Result> GetHeaderMidByHeaderTopIDAndJobID(int HeaderTopID,int JobID)
+        {
+            var header = ServiceContainer.GetService<PesWeb.Service.Modules.HeaderManage>();
+            List<SP_GetHeaderMidByHeaderTopAndJobID_Result> HeadrMidByHearderTobIDAndJobID = header.GetHeaderMidByHeaderTopAndJobID(HeaderTopID, JobID).ToList();
+            return HeadrMidByHearderTobIDAndJobID;
         }
 
         [Route("HeaderBot")]

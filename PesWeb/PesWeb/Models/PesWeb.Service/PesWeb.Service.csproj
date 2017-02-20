@@ -148,10 +148,22 @@
     </Compile>
     <Compile Include="Security\UserInformation.cs" />
     <Compile Include="Security\UserMaintenanceSvc.cs" />
+    <Compile Include="SP_GetAllHeaderByJobID_Result.cs">
+      <DependentUpon>PSESDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_GetAllHeaderJob_Result.cs">
       <DependentUpon>PSESDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="SP_GetHeaderMidByHeaderTopAndJobID_Result.cs">
+      <DependentUpon>PSESDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="SP_GetJobDetail_Result.cs">
+      <DependentUpon>PSESDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_HeaderTopByJobID_Result.cs">
+      <DependentUpon>PSESDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_HeaderTopByJob_Result.cs">
       <DependentUpon>PSESDB.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEvaluation.cs">
