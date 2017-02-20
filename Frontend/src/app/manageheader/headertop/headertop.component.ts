@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadertopComponent implements OnInit {
 
+  PositionId : Number;
   constructor() { }
 
   ngOnInit() {
+  }
+  in(Id :Number)
+  {
+  	this.PositionId = Id;
+    console.log(this.PositionId);
   }
 
 }
