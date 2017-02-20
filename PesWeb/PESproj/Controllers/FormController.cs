@@ -15,7 +15,7 @@ namespace PESproj.Controllers
     [RoutePrefix("Form")]
     public class FormController : ApiController
     {
-        [Route("CreateEva")]
+        [Route("CreateEvaHeader")]
         [HttpPost]
         public int createForm([FromBody]JObject Data)
         {
@@ -30,19 +30,11 @@ namespace PESproj.Controllers
             return svc.getEvaID(Eva);
         }
 
-        [Route("CreateDataByEvaID")]
+        [Route("CreateDataByEvaID/{EvaID}")]
         [HttpGet]
-        public int Evaluation([FromBody]JObject Data)
+        public int Evaluation(int EvaID)
         {
-            tblEvaluation Eva = new tblEvaluation();
-            Eva.EmployeeNO = Data["EmployeeNO"].ToString();
-            Eva.EvaluatorNO = Data["EvaluatorNO"].ToString();
-            Eva.Job_ID = Convert.ToInt32(Data["JobID"].ToString());
-            Eva.ProjectNO = Data["ProjectNO"].ToString();
-            var svc = ServiceContainer.GetService<PesWeb.Service.Modules.FormManage>();
-            svc.createForm(Eva);
-
-            return svc.getEvaID(Eva);
+            return 0;
         }
     }
 }
