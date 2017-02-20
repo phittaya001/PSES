@@ -34,7 +34,6 @@ namespace PESproj.Controllers
         [HttpGet]
         public int Evaluation(int EvaID)
         {
-
             return 0;
         }
     }
